@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="LondonStockExchange.API/LondonStockExchange.API.csproj" />
+  <Project Path="LondonStockExchange.Application/LondonStockExchange.Application.csproj" />
+  <Project Path="LondonStockExchange.Domain/LondonStockExchange.Domain.csproj" />
+  <Project Path="LondonStockExchange.Infrastructure/LondonStockExchange.Infrastructure.csproj" />
+</Solution>
