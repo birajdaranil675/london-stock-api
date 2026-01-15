@@ -22,7 +22,7 @@ namespace LondonStockExchange.API.Controllers
 
         [HttpPost]
         [Route("/prices")]
-        public async Task<List<StockPriceDto>> GetAllStockPrices([FromBody] List<string> stockList)
+        public async Task<List<StockPriceDto>> GetAllStockPricesForSelectedStocks([FromBody] List<string> stockList)
         {
             return new List<StockPriceDto>();
         }

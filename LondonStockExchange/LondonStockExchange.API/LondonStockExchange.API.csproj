@@ -15,8 +15,4 @@
     <Folder Include="Filters\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\LondonStockExchange.Application\LondonStockExchange.Application.csproj" />
-  </ItemGroup>
-
 </Project>
