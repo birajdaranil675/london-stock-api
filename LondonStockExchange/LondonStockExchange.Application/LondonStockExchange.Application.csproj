@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LondonStockExchange.API\LondonStockExchange.API.csproj" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LondonStockExchange.Domain\LondonStockExchange.Domain.csproj" />
   </ItemGroup>
 
 </Project>
