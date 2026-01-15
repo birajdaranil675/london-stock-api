@@ -1,6 +1,11 @@
 <Solution>
-  <Project Path="LondonStockExchange.API/LondonStockExchange.API.csproj" />
-  <Project Path="LondonStockExchange.Application/LondonStockExchange.Application.csproj" />
-  <Project Path="LondonStockExchange.Domain/LondonStockExchange.Domain.csproj" />
-  <Project Path="LondonStockExchange.Infrastructure/LondonStockExchange.Infrastructure.csproj" />
+  <Folder Name="/src/">
+    <Project Path="LondonStockExchange.API/LondonStockExchange.API.csproj" />
+    <Project Path="LondonStockExchange.Application/LondonStockExchange.Application.csproj" />
+    <Project Path="LondonStockExchange.Domain/LondonStockExchange.Domain.csproj" />
+    <Project Path="LondonStockExchange.Infrastructure/LondonStockExchange.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="LondonStockExchange.UnitTests/Application.Tests.csproj" Id="acc8c058-89d1-4b35-b757-e680a3f23d9b" />
+  </Folder>
 </Solution>
