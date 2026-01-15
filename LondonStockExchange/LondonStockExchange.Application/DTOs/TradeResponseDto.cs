@@ -1,4 +1,4 @@
-﻿namespace LondonStockExchange.API.DTOs
+﻿namespace LondonStockExchange.Application.DTOs
 {
     public class TradeResponseDto
     {

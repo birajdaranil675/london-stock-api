@@ -1,30 +1,49 @@
-﻿using LondonStockExchange.API.DTOs;
+﻿
+using LondonStockExchange.Application.DTOs;
+using LondonStockExchange.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LondonStockExchange.API.Controllers
 {
-    [Route("api/{controller}")]
+    [ApiController]
+    [Route("api")]
     public class StocksController : Controller
     {
-        [HttpGet]
-        [Route("/{tickerSymbol}/price")]
-        public async Task<StockPriceDto> GetStockPrice([FromRoute] string tickerSymbol)
+        private readonly IStockPriceService _stockPriceService;
+
+        public StocksController(IStockPriceService stockPriceService)
         {
-            return new StockPriceDto() { };
+            _stockPriceService = stockPriceService;
         }
 
-        [HttpGet]
-        [Route("/prices")]
-        public async Task<List<StockPriceDto>> GetAllStockPrices()
+
+        [HttpGet("{tickerSymbol}/price")]
+        public async Task<ActionResult<StockPriceDto>> GetStockPrice([FromRoute] string tickerSymbol)
         {
-            return new List<StockPriceDto>();
+            var stockPrice = await _stockPriceService.GetByTickerAsync(tickerSymbol);
+
+            if (stockPrice == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(stockPrice);
         }
 
-        [HttpPost]
-        [Route("/prices")]
-        public async Task<List<StockPriceDto>> GetAllStockPricesForSelectedStocks([FromBody] List<string> stockList)
+        [HttpGet("prices")]
+        public async Task<ActionResult<List<StockPriceDto>>> GetAllStockPrices()
         {
-            return new List<StockPriceDto>();
+            var result = await _stockPriceService.GetAllAsync();
+
+            return Ok(result);
+        }
+
+        [HttpPost("prices")]
+        public async Task<ActionResult<List<StockPriceDto>>> GetAllStockPricesForSelectedStocks([FromBody] List<string> stockList)
+        {
+            var result = await _stockPriceService.GetByTickersAsync(stockList);
+
+            return Ok(result);
         }
     }
 }

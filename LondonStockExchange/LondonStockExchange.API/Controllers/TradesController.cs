@@ -1,22 +1,26 @@
-﻿using LondonStockExchange.API.DTOs;
+﻿using LondonStockExchange.Application.DTOs;
+using LondonStockExchange.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LondonStockExchange.API.Controllers
 {
-    [Route("api/{controller}")]
+    [ApiController]
+    [Route("api/[controller]")]
     public class TradesController : Controller
     {
+        private readonly ITradeService _tradeService;
+
+        public TradesController(ITradeService tradeService)
+        {
+            _tradeService = tradeService;
+        }
+
         [HttpPost]
         public async Task<TradeResponseDto> CreateTrade([FromBody] TradeRequestDto tradeRequest)
         {
-            return await Task.Run(() =>
-            {
-                var tradeResponse = new TradeResponseDto
-                {
-                    TradeId = "TRADE123"
-                };
-                return tradeResponse;
-            });
+            var result = await _tradeService.CreateTradeAsync(tradeRequest);
+
+            return  result;
         }
     }
 }

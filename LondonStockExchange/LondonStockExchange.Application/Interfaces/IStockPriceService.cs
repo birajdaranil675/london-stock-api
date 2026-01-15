@@ -1,15 +1,11 @@
-﻿using LondonStockExchange.API.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
+﻿using LondonStockExchange.Application.DTOs;
 
 namespace LondonStockExchange.Application.Interfaces
 {
     public interface IStockPriceService
     {
-        Task<StockPriceDto> GetStockPricesAsync(string tickerSymbol);
-        Task<List<StockPriceDto>> GetAllStockPricesAsync();
-        Task<List<StockPriceDto>> GetAllStockPricesForSelectedStocksAsync(List<string> stockList);
+        Task<StockPriceDto?> GetByTickerAsync(string tickerSymbol);
+        Task<List<StockPriceDto>> GetAllAsync();
+        Task<List<StockPriceDto>> GetByTickersAsync(List<string> tickerSymbols);
     }
 }
