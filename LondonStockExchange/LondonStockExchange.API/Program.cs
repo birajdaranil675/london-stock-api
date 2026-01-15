@@ -1,7 +1,6 @@
+using LondonStockExchange.API.Extensions;
 using LondonStockExchange.Application.DependencyInjection;
 using LondonStockExchange.Infrastructure.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +16,8 @@ builder.Services.ApplicationServicesCollection();
 
 
 var app = builder.Build();
+
+app.UseGlobalExceptionHandling();
 
 // Configure pipeline
 if (app.Environment.IsDevelopment())
